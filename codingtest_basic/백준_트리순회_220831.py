@@ -35,7 +35,7 @@ def second(num):
 
     while num:
         i = num.pop()
-        for j in range(n):
+        for j in range(1, n):
             if i == inputs[j][0] and inputs[j][1] != '.':
                 num.append(inputs[j][1])
                 second(num)

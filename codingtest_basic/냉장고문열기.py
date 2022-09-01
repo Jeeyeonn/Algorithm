@@ -18,6 +18,6 @@ def solution(openA, closeB):
     return answer
 
 
-a = [4, 7, 9, 16]
-b = [2, 5, 12, 14, 20]
+a = [4,7,9,16]
+b = [2,5,12,14,20]
 print(solution(a,b))
