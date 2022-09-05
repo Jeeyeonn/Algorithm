@@ -1,26 +1,23 @@
 import math
 
 n = int(input())
-a = [["*", "*", "*"],
-     ["*", " ", "*"],
-     ["*", "*", "*"]]
+a = ["***", "* *", "***"]
+# b = ""
 
-
-b = [[" " for _ in range(n)] for _ in range(n)]
 num = int(n**(1/3))
 
 def print_star(b):
     bb = len(b) * 3
-    answer = [['' for _ in range(bb)] for _ in range(bb)]
+    answer = []
     blank = [' ' for _ in range(len(b))]
 
     for i in range(bb):
         if 0 <= i < len(b):
-            answer[i] = b[i] * 3
+            answer.append(b[i] * 3)  # -> ["*", "*", "*", "*", "*", "*", "*", "*", "*"] ㅠㅠ
         elif len(b) <= i < len(b)*2:
-            answer[i] = b[i % len(b)] + blank + b[i % len(b)]
+            answer.append(b[i % len(b)] + ''.join(blank) + b[i % len(b)])
         else:
-            answer[i] = b[i % len(b)] * 3
+            answer.append(b[i % len(b)] * 3)
 
     return answer
 
