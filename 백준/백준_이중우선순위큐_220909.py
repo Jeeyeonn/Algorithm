@@ -1,5 +1,7 @@
+from collections import deque
+
 n = int(input())
-answer= []
+answer = deque()
 
 for _ in range(n):
     m = int(input())
@@ -21,6 +23,7 @@ for _ in range(n):
                     min_num = min(answer)
                     index = answer.index(min_num)
                     del answer[index]
+
     if len(answer) != 0:
         print(max(answer), min(answer))
     else:
