@@ -21,7 +21,9 @@ for j in range(1, n+1):
             elif answer[inputs[i][1] - 1] == -1:
                 answer[inputs[i][1] - 1] = answer[j - 1] + inputs[i][2]
         i += 1
-    if answer[j-1] == -1:
+
+for a in answer:
+    if a == -1:
         print("INF")
     else:
-        print(answer[j-1])
+        print(a)
