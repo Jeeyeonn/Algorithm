@@ -1,0 +1,55 @@
+from collections import deque
+
+
+def solution(numbers):
+    answer = [-1 for _ in range(len(numbers))]
+
+    for i in range(len(numbers)):
+        bin_num = bin(numbers[i])[2:]
+
+        k = 1
+        cnt = 1
+        while True:
+            if cnt >= len(bin_num):
+                break
+            cnt = 2**k - 1
+            k += 1
+
+        if cnt != len(bin_num):
+            zero = "0" * (cnt - len(bin_num))
+            bin_num = zero + bin_num
+
+        q = deque()
+        q.append(bin_num)
+        is_bintree = True
+
+        while q:
+            num_list = q.popleft()
+            middle, left, right = (
+                num_list[len(num_list) // 2],
+                num_list[: len(num_list) // 2],
+                num_list[len(num_list) // 2 + 1 :],
+            )
+            if middle == "0":
+                if len(left) != 1:
+                    if left[len(left) // 2] == "1" or right[len(right) // 2] == "1":
+                        is_bintree = False
+                        break
+                else:
+                    if left == "1" or right == "1":
+                        is_bintree = False
+                        break
+            if len(left) != 1:
+                q.append(left)
+                q.append(right)
+
+        if is_bintree:
+            answer[i] = 1
+        else:
+            answer[i] = 0
+
+    return answer
+
+
+print(solution([5]), [1, 0])
+print(solution([63, 111, 95]), [1, 1, 0])
