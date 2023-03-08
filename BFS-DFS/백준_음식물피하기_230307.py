@@ -25,7 +25,7 @@ def bfs(x, y):
             for i in range(4):
                 nx = a + dx[i]
                 ny = b + dy[i]
-                if 0<= nx < n and 0<= ny < n:
+                if 0<= nx < n and 0<= ny < m:
                     if visited[nx][ny] == False and map_list[nx][ny] == 1:
                         q.append([nx, ny])
     return cnt
